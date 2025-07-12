@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost:4000/api/items";
+const API_URL = "https://phoenix-rewear.onrender.com/api/items";
 
 export default function AddItem() {
   const { token } = useAuth();

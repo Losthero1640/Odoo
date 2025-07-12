@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 
-const API_URL = "http://localhost:4000/api";
+const API_URL = "https://phoenix-rewear.onrender.com/api";
 
 export default function AdminPanel() {
   const { token } = useAuth();

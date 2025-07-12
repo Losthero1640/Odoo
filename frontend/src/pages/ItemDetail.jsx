@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-const API_URL = "http://localhost:4000/api/items";
+const API_URL = "https://phoenix-rewear.onrender.com/api/items";
 
 export default function ItemDetail() {
   const { id } = useParams();

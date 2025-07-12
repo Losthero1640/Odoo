@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
-const API_URL = "http://localhost:4000/api";
+const API_URL = "https://phoenix-rewear.onrender.com/api";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null); // {id,email,isAdmin}

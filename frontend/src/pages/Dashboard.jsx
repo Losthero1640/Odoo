@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
-const API_URL = "http://localhost:4000/api/users/dashboard";
+const API_URL = "https://phoenix-rewear.onrender.com/api/users/dashboard";
 
 export default function Dashboard() {
   const { token } = useAuth();

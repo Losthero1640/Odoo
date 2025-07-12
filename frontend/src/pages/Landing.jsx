@@ -5,7 +5,7 @@ export default function Landing() {
   const [featured, setFeatured] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/items/featured")
+    fetch("https://phoenix-rewear.onrender.com/api/items/featured")
       .then((res) => res.json())
       .then(setFeatured)
       .catch(console.error);
