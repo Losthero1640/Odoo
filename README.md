@@ -1,4 +1,12 @@
 # Odoo
+youtube link - https://www.youtube.com/watch?v=ECh-oLMs2FM
+Problem Statement 3
+ReWear- Communitiy Clothing Exchange
+
+Pattanaik Ayushman ALok - ayushmanpattanaik001@gmail.com
+Bishal Kumar Hota - biahalhota264@gmail.com
+Jupalli Ved Aditya - vedadityajupalli10@gmail.com
+Anshuman Panda - anshumancse201@gmail.com
 # AI Assistant System with Gemini API Integration
 
 A comprehensive AI assistant system for the clothing brand, featuring semantic search, chat functionality, and notification services using Google's Gemini API and sentence transformers for embeddings.
@@ -328,10 +336,4 @@ This project is licensed under the MIT License.
 
 **Built with ❤️ for the Odoo Hackathon** 
 
-Problem Statement 3
-ReWear- Communitiy Clothing Exchange
 
-Pattanaik Ayushman ALok - ayushmanpattanaik001@gmail.com
-Bishal Kumar Hota - biahalhota264@gmail.com
-Jupalli Ved Aditya - vedadityajupalli10@gmail.com
-Anshuman Panda - anshumancse201@gmail.com
