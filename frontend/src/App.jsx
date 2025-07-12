@@ -1,43 +1,69 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
-import LandingPage from './pages/LandingPage';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
-import Dashboard from './pages/Dashboard';
-import BrowsePage from './pages/BrowsePage';
-import AddItemPage from './pages/AddItemPage';
-import ItemDetailPage from './pages/ItemDetailPage';
-import SwapsPage from './pages/SwapsPage';
-import AdminPanel from './pages/AdminPanel';
-import NotFound from './pages/NotFound';
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Landing from "./pages/Landing";
+import Signup from "./pages/signup";
+import Login from "./pages/Login";
+import Browse from "./pages/Browse";
+import ItemDetail from "./pages/ItemDetail";
+import Dashboard from "./pages/Dashboard";
+import AddItem from "./pages/AddItem";
+import AdminPanel from "./pages/AdminPanel";
+import { AuthProvider, useAuth } from "./context/AuthContext";
 
-function App() {
-  return (
-    <Router>
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/browse" element={<BrowsePage />} />
-            <Route path="/add-item" element={<AddItemPage />} />
-            <Route path="/item/:id" element={<ItemDetailPage />} />
-            <Route path="/swaps" element={<SwapsPage />} />
-            <Route path="/admin" element={<AdminPanel />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        
-        <Footer />
-      </div>
-    </Router>
-  );
+function ProtectedRoute({ children }) {
+  const { user } = useAuth();
+  if (!user) return <Navigate to="/login" />;
+  return children;
 }
 
-export default App;
+function AdminRoute({ children }) {
+  const { user } = useAuth();
+  if (!user || !user.isAdmin) return <Navigate to="/" />;
+  return children;
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Navbar />
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/browse" element={<Browse />} />
+            <Route path="/items/:id" element={<ItemDetail />} />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/add-item"
+              element={
+                <ProtectedRoute>
+                  <AddItem />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/admin"
+              element={
+                <AdminRoute>
+                  <AdminPanel />
+                </AdminRoute>
+              }
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </AuthProvider>
+  );
+}
